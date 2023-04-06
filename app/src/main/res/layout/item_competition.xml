@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_margin="4dp"
+    app:cardCornerRadius="4dp"
+    app:cardElevation="8dp"
+    app:strokeColor="@color/eucalyptus"
+    app:strokeWidth="2dp"
+    app:cardPreventCornerOverlap="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center">
+        <ImageView
+            android:id="@+id/competitionImage"
+            android:layout_width="wrap_content"
+            android:layout_height="120dp"
+            android:src="@drawable/ic_epl_banner"
+            android:scaleType="fitCenter" />
+        <TextView
+            android:id="@+id/competitionArena"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:gravity="center"
+            android:text="Qatar 2022"
+            android:textSize="18sp"/>
+        <TextView
+            android:id="@+id/competitionName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:gravity="center"
+            android:text="FIFA World Cup"
+            android:textStyle="bold"
+            android:textSize="20sp"/>
+    </LinearLayout>
+</com.google.android.material.card.MaterialCardView>

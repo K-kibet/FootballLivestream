@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/light_orange"
+    android:gravity="center"
+    android:orientation="vertical">
+    <ImageView
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:src="@drawable/baseline_signal_wifi_off_24"
+        android:layout_gravity="center"
+        app:tint="#B35512" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="OOPS!"
+        android:textStyle="bold"
+        android:textSize="40sp"
+        android:gravity="center"
+        android:textColor="@color/dark_orange" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="No Internet Connection"
+        android:textSize="25sp"
+        android:gravity="center"
+        android:textColor="@color/dark_orange" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Please check your connection"
+        android:textSize="18sp"
+        android:gravity="center"
+        android:textColor="@color/dark_orange" />
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnRetry"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="50dp"
+        android:text="Retry"
+        android:background="@drawable/button_shape"
+        android:textColor="@color/white"
+        android:gravity="center"
+        android:textAllCaps="true"/>
+</LinearLayout>
