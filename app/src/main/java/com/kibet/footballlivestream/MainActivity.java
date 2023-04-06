@@ -18,7 +18,6 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 
-import com.google.android.ads.nativetemplates.BuildConfig;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdSize;
 import com.google.android.gms.ads.AdView;
@@ -31,7 +30,7 @@ import com.google.android.material.navigation.NavigationView;
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     private DrawerLayout drawer;
 
-    InterstitialAd mInterstitialAd;
+    private InterstitialAd mInterstitialAd;
     private FrameLayout adViewContainer;
 
     @Override
@@ -46,22 +45,23 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar,R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
 
-        if(bundle == null)  {
+        if (bundle == null) {
             getSupportFragmentManager().beginTransaction().replace(R.id.layout_container, new CategoryFragment()).commit();
             navigationView.setCheckedItem(R.id.nav_category);
         }
 
         AdRequest adRequest = new AdRequest.Builder().build();
-        InterstitialAd.load(this,getString(R.string.Interstitial_Ad_Unit), adRequest,
+        InterstitialAd.load(this, getString(R.string.Interstitial_Ad_Unit), adRequest,
                 new InterstitialAdLoadCallback() {
                     @Override
                     public void onAdLoaded(@NonNull InterstitialAd interstitialAd) {
                         mInterstitialAd = interstitialAd;
                     }
+
                     @Override
                     public void onAdFailedToLoad(@NonNull LoadAdError loadAdError) {
                         mInterstitialAd = null;
@@ -103,27 +103,23 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         return true;
     }
 
-    private void share () {
+    private void share() {
         Intent sendIntent = new Intent();
         sendIntent.setAction(Intent.ACTION_SEND);
         sendIntent.putExtra(Intent.EXTRA_SUBJECT, "Football Livestream");
-        String shareMessage= "\nLet me recommend you this application\n\n";
-        shareMessage = shareMessage + "https://play.google.com/store/apps/details?id=" + BuildConfig.LIBRARY_PACKAGE_NAME +"\n\n";
+        String shareMessage = "\nLet me recommend you this application\n\n";
+        shareMessage = shareMessage + "https://play.google.com/store/apps/details?id=" + BuildConfig.APPLICATION_ID + "\n\n";
         sendIntent.putExtra(Intent.EXTRA_TEXT, shareMessage);
         sendIntent.setType("text/plain");
         Intent shareIntent = Intent.createChooser(sendIntent, null);
         startActivity(shareIntent);
     }
 
-    public void rate()
-    {
-        try
-        {
+    public void rate() {
+        try {
             Intent rateIntent = rateIntentForUrl("market://details");
             startActivity(rateIntent);
-        }
-        catch (ActivityNotFoundException e)
-        {
+        } catch (ActivityNotFoundException e) {
             Intent rateIntent = rateIntentForUrl("https://play.google.com/store/apps/details");
             startActivity(rateIntent);
         }
@@ -163,14 +159,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         return AdSize.getCurrentOrientationAnchoredAdaptiveBannerAdSize(this, adWidth);
     }
 
-   @Override
+    @Override
     public void onBackPressed() {
-        if(drawer.isDrawerOpen(GravityCompat.START)) {
+        if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
             super.onBackPressed();
             if (mInterstitialAd != null) {
-                mInterstitialAd.show(MainActivity.this);
                 mInterstitialAd.setFullScreenContentCallback(new FullScreenContentCallback() {
                     @Override
                     public void onAdDismissedFullScreenContent() {
@@ -179,6 +174,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                         finish();
                     }
                 });
+                mInterstitialAd.show(MainActivity.this);
             } else {
                 finish();
             }

@@ -18,7 +18,6 @@ import com.google.android.gms.ads.MobileAds;
 import com.google.android.gms.ads.interstitial.InterstitialAd;
 import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback;
 import com.squareup.picasso.Picasso;
-
 import java.util.List;
 import java.util.Objects;
 
@@ -31,6 +30,7 @@ public class FixturesAdapter extends RecyclerView.Adapter<FixturesAdapter.ViewHo
         this.context = context;
         this.matchList = list;
     }
+
 
     @NonNull
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -63,8 +63,9 @@ public class FixturesAdapter extends RecyclerView.Adapter<FixturesAdapter.ViewHo
         holder.textHome.setText(match.getHomeTeam());
         holder.textAway.setText(match.getAwayTeam());
         holder.textResults.setText(match.getScore());
-        if(Objects.equals(match.getScore(), "?-?")) {
-            holder.duration.setText("Upcoming");
+        holder.duration.setText(match.getDate().split("T")[1]);
+        if(!Objects.equals(match.getScore(), "?-?")) {
+            holder.duration.setText("FT");
         }
         Picasso.get().load(match.getCupImage()).placeholder(R.drawable.ic_football).error(R.drawable.ic_football).into(holder.imageCup);
         holder.itemView.setOnClickListener(view -> {

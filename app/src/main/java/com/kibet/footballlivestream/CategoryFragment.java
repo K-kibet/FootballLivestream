@@ -1,5 +1,6 @@
 package com.kibet.footballlivestream;
 
+import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -17,6 +18,11 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.FullScreenContentCallback;
+import com.google.android.gms.ads.LoadAdError;
+import com.google.android.gms.ads.interstitial.InterstitialAd;
+import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -43,7 +49,6 @@ public class CategoryFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         recyclerView = view.findViewById(R.id.recyclerView);
-        loadCompetitions(getContext());
         competitionList = new ArrayList<>();
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
         recyclerView.setLayoutManager(linearLayoutManager);
@@ -60,9 +65,11 @@ public class CategoryFragment extends Fragment {
         });
         builder.setNegativeButton("Ok", (dialog, which) -> dialog.cancel());
         alertDialog = builder.create();
+
+        loadCompetitions(getContext());
     }
 
-    private void loadCompetitions (Context context) {
+    private void loadCompetitions(Context context) {
         RequestQueue requestQueue = Volley.newRequestQueue(context);
         String url = "https://api.football-data.org/v4/competitions";
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest
@@ -77,10 +84,10 @@ public class CategoryFragment extends Fragment {
                     } catch (JSONException e) {
                         alertDialog.show();
                     }
-                }, error -> alertDialog.show()){
+                }, error -> alertDialog.show()) {
             @Override
             public Map<String, String> getHeaders() {
-                Map<String, String>  params = new HashMap<>();
+                Map<String, String> params = new HashMap<>();
                 params.put("X-Auth-Token", "6f290c7d3caf4bb69f07dacaf7273267");
                 params.put("Accept", "application/json");
                 return params;

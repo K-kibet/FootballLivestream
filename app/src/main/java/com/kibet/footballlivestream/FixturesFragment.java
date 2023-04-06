@@ -1,5 +1,6 @@
 package com.kibet.footballlivestream;
 
+import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -17,6 +18,8 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+import com.google.android.gms.ads.FullScreenContentCallback;
+import com.google.android.gms.ads.interstitial.InterstitialAd;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -31,9 +34,10 @@ public class FixturesFragment extends Fragment {
     private RecyclerView recyclerView;
     private FixturesAdapter fixturesAdapter;
     private List<Match> matchList;
-    private  String url;
+    private String url;
     AlertDialog.Builder builder;
     AlertDialog alertDialog;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -46,7 +50,7 @@ public class FixturesFragment extends Fragment {
         url = "https://api.football-data.org/v4/matches";
         recyclerView = view.findViewById(R.id.recyclerView);
         matchList = new ArrayList<>();
-        loadMatches(getContext());
+
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
         recyclerView.setLayoutManager(linearLayoutManager);
         fixturesAdapter = new FixturesAdapter(getContext(), matchList);
@@ -61,9 +65,10 @@ public class FixturesFragment extends Fragment {
         });
         builder.setNegativeButton("Ok", (dialog, which) -> dialog.cancel());
         alertDialog = builder.create();
-    }
 
-    private void loadMatches (Context context) {
+        loadMatches(getContext());
+    }
+    private void loadMatches(Context context) {
         RequestQueue requestQueue = Volley.newRequestQueue(context);
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest
                 (Request.Method.GET, url, null, response -> {
@@ -74,8 +79,9 @@ public class FixturesFragment extends Fragment {
                             Match match = new Match(jsonObject.getJSONObject("homeTeam").getString("shortName"),
                                     jsonObject.getJSONObject("awayTeam").getString("shortName"),
                                     jsonObject.getJSONObject("competition").getString("emblem"),
-                                    jsonObject.getJSONObject("score").getJSONObject("fullTime").getString("home") + "-"+ jsonObject.getJSONObject("score").getJSONObject("fullTime").getString("away"));
-                            if(jsonObject.getJSONObject("score").getJSONObject("fullTime").getString("home").equals("null")) {
+                                    jsonObject.getJSONObject("score").getJSONObject("fullTime").getString("home") + "-" + jsonObject.getJSONObject("score").getJSONObject("fullTime").getString("away"),
+                                    jsonObject.getString("utcDate"));
+                            if (jsonObject.getJSONObject("score").getJSONObject("fullTime").getString("home").equals("null")) {
                                 match.setScore("?-?");
                             }
                             matchList.add(match);
@@ -85,10 +91,10 @@ public class FixturesFragment extends Fragment {
                     } catch (JSONException e) {
                         alertDialog.show();
                     }
-                }, error -> alertDialog.show()){
+                }, error -> alertDialog.show()) {
             @Override
             public Map<String, String> getHeaders() {
-                Map<String, String>  params = new HashMap<>();
+                Map<String, String> params = new HashMap<>();
                 params.put("X-Auth-Token", "6f290c7d3caf4bb69f07dacaf7273267");
                 return params;
             }

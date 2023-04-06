@@ -29,5 +29,6 @@ public class SplashActivity extends AppCompatActivity {
     protected void onStop() {
         unregisterReceiver(networkChangeListener);
         super.onStop();
+        finish();
     }
 }
