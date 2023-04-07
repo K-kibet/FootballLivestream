@@ -63,7 +63,7 @@ public class FixturesAdapter extends RecyclerView.Adapter<FixturesAdapter.ViewHo
         holder.textHome.setText(match.getHomeTeam());
         holder.textAway.setText(match.getAwayTeam());
         holder.textResults.setText(match.getScore());
-        holder.duration.setText(match.getDate().split("T")[1]);
+        holder.duration.setText(match.getDate().split("T")[1].split(":00Z")[0]);
         if(!Objects.equals(match.getScore(), "?-?")) {
             holder.duration.setText("FT");
         }
