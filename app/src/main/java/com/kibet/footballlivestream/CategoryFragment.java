@@ -1,11 +1,13 @@
 package com.kibet.footballlivestream;
 
-import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
+import android.view.Display;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -19,10 +21,8 @@ import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.FullScreenContentCallback;
-import com.google.android.gms.ads.LoadAdError;
-import com.google.android.gms.ads.interstitial.InterstitialAd;
-import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback;
+import com.google.android.gms.ads.AdSize;
+import com.google.android.gms.ads.AdView;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -33,6 +33,7 @@ import java.util.List;
 import java.util.Map;
 
 public class CategoryFragment extends Fragment {
+    private FrameLayout adViewContainer;
     private RecyclerView recyclerView;
     CompetitionsAdapter competitionsAdapter;
     private List<Competition> competitionList;
@@ -48,6 +49,10 @@ public class CategoryFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        adViewContainer = view.findViewById(R.id.adViewContainer);
+        adViewContainer.post(this::LoadBanner);
+
         recyclerView = view.findViewById(R.id.recyclerView);
         competitionList = new ArrayList<>();
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
@@ -94,5 +99,26 @@ public class CategoryFragment extends Fragment {
             }
         };
         requestQueue.add(jsonObjectRequest);
+    }
+
+    private void LoadBanner() {
+        AdView adView = new AdView(getContext());
+        adView.setAdUnitId(getString(R.string.Banner_Ad_Unit));
+        adViewContainer.removeAllViews();
+        adViewContainer.addView(adView);
+        AdSize adSize = getAdSize();
+        adView.setAdSize(adSize);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        adView.loadAd(adRequest);
+    }
+
+    private AdSize getAdSize() {
+        Display display = getActivity().getWindowManager().getDefaultDisplay();
+        DisplayMetrics outMetrics = new DisplayMetrics();
+        display.getMetrics(outMetrics);
+        float widthPixels = outMetrics.widthPixels;
+        float density = outMetrics.density;
+        int adWidth = (int) (widthPixels / density);
+        return AdSize.getCurrentOrientationAnchoredAdaptiveBannerAdSize(getContext(), adWidth);
     }
 }

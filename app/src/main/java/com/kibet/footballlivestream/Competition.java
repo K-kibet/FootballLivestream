@@ -1,5 +1,4 @@
 package com.kibet.footballlivestream;
-
 public class Competition {
     private final String competitionImage;
     private final String competitionName;
@@ -16,17 +15,10 @@ public class Competition {
     public String getCompetitionImage() {
         return competitionImage;
     }
-
     public String getCompetitionName() {
         return competitionName;
     }
-
     public String getCompetitionArena() {
         return competitionArena;
     }
-
-    public String getCompetitionId() {
-        return competitionId;
-    }
-
 }

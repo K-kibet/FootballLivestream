@@ -4,10 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center"
     android:padding="10dp"
     tools:context=".LivestreamActivity">
     <androidx.cardview.widget.CardView
+        android:id="@+id/cardLivestream"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:cardCornerRadius="8dp">
@@ -29,4 +29,10 @@
                 android:textColor="@color/white"/>
         </LinearLayout>
     </androidx.cardview.widget.CardView>
+    <com.google.android.ads.nativetemplates.TemplateView
+        android:id="@+id/nativeAdView"
+        app:gnt_template_type="@layout/gnt_medium_template_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"/>
 </RelativeLayout>

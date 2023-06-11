@@ -8,16 +8,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.LoadAdError;
-import com.google.android.gms.ads.MobileAds;
 import com.google.android.gms.ads.interstitial.InterstitialAd;
 import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback;
 import com.squareup.picasso.Picasso;
+
 import java.util.List;
 import java.util.Objects;
 
@@ -30,13 +28,10 @@ public class FixturesAdapter extends RecyclerView.Adapter<FixturesAdapter.ViewHo
         this.context = context;
         this.matchList = list;
     }
-
-
     @NonNull
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_fixture, parent, false);
         if(this.bool) {
-            MobileAds.initialize(this.context);
             AdRequest adRequest = new AdRequest.Builder().build();
             Context context = this.context;
             InterstitialAd.load(context, context.getString(R.string.Interstitial_Ad_Unit), adRequest,
@@ -46,7 +41,6 @@ public class FixturesAdapter extends RecyclerView.Adapter<FixturesAdapter.ViewHo
                             super.onAdFailedToLoad(loadAdError);
                             mInterstitialAd = null;
                         }
-
                         @Override
                         public void onAdLoaded(@NonNull InterstitialAd interstitialAd) {
                             super.onAdLoaded(interstitialAd);
