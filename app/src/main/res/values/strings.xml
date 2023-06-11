@@ -1,10 +1,10 @@
 <resources>
     <string name="app_name">Football Livestream HD Tv</string>
-    <string name="App_Id">ca-app-pub-3940256099942544~3347511713</string>
+    <string name="App_Id">ca-app-pub-2583214494360788~4407708479</string>
     <!--Ad Unit -->
-    <string name="Interstitial_Ad_Unit">ca-app-pub-3940256099942544/1033173712</string>
-    <string name="Banner_Ad_Unit">ca-app-pub-3940256099942544/6300978111</string>
-    <string name="Native_Ad_Unit">ca-app-pub-3940256099942544/2247696110</string>
+    <string name="Interstitial_Ad_Unit">ca-app-pub-2583214494360788/3093749117</string>
+    <string name="Banner_Ad_Unit">ca-app-pub-2583214494360788/4458005519</string>
+    <string name="Native_Ad_Unit">ca-app-pub-2583214494360788/6958694706</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
 </resources>
