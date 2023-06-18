@@ -39,7 +39,6 @@ public class CategoryFragment extends Fragment {
     private List<Competition> competitionList;
     AlertDialog.Builder builder;
     AlertDialog alertDialog;
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -111,7 +110,6 @@ public class CategoryFragment extends Fragment {
         AdRequest adRequest = new AdRequest.Builder().build();
         adView.loadAd(adRequest);
     }
-
     private AdSize getAdSize() {
         Display display = getActivity().getWindowManager().getDefaultDisplay();
         DisplayMetrics outMetrics = new DisplayMetrics();
