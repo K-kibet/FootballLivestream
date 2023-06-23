@@ -2,15 +2,28 @@
     <!-- Base application theme. -->
     <style name="Theme.FootballLivestream" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/eucalyptus_light</item>
-        <item name="colorPrimaryVariant">@color/eucalyptus_dark</item>
+        <item name="colorPrimary">@color/light_green</item>
+        <item name="colorPrimaryVariant">@color/dark_green</item>
         <item name="colorOnPrimary">@color/black</item>
         <!-- Secondary brand color. -->
-        <item name="colorSecondary">@color/teal_200</item>
-        <item name="colorSecondaryVariant">@color/teal_200</item>
+        <item name="colorSecondary">@color/light_green</item>
+        <item name="colorSecondaryVariant">@color/green</item>
         <item name="colorOnSecondary">@color/black</item>
         <!-- Status bar color. -->
         <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
+        <item name="drawerItemBackground">@color/green</item>
+        <item name="drawerItemColorChecked">@color/white</item>
+        <item name="drawerItemColorNormal">@color/white</item>
+        <item name="navHeaderTitleColor">@color/white</item>
+        <item name="navHeaderDescriptionColor">@color/light_green</item>
+        <item name="drawerBackground">@color/black</item>
+
+    </style>
+
+    <style name="Theme.NavigationDrawer" parent="ThemeOverlay.MaterialComponents.Dark">
+        <item name="android:scrollbarThumbVertical">@android:color/transparent</item>
+        <item name="colorControlHighlight">@color/light_green</item>
+        <item name="colorPrimary">@color/green</item>
     </style>
 </resources>

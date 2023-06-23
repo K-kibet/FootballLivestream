@@ -6,7 +6,7 @@
     android:layout_margin="4dp"
     app:cardCornerRadius="4dp"
     app:cardElevation="8dp"
-    app:strokeColor="@color/eucalyptus"
+    app:strokeColor="@color/green"
     app:strokeWidth="2dp"
     app:cardPreventCornerOverlap="true">
 

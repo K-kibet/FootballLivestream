@@ -44,7 +44,7 @@
         android:layout_marginTop="20dp"
         android:text="RELOAD"
         android:layout_below="@id/errorMessage"
-        android:backgroundTint="@color/black"
+        android:backgroundTint="@color/dark_green"
         android:drawableRight="@drawable/baseline_replay_circle_filled_24"/>
     <Button
         android:id="@+id/btnOk"
@@ -53,5 +53,5 @@
         android:layout_marginTop="20dp"
         android:text="OK"
         android:layout_below="@id/btnReload"
-        android:backgroundTint="@color/black"/>
+        android:backgroundTint="@color/dark_green"/>
 </RelativeLayout>

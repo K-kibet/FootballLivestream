@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/light_orange"
+    android:background="@color/light_green"
     android:gravity="center"
     android:orientation="vertical">
     <ImageView
@@ -19,21 +19,21 @@
         android:textStyle="bold"
         android:textSize="40sp"
         android:gravity="center"
-        android:textColor="@color/dark_orange" />
+        android:textColor="@color/dark_green" />
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="No Internet Connection"
         android:textSize="25sp"
         android:gravity="center"
-        android:textColor="@color/dark_orange" />
+        android:textColor="@color/dark_green" />
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Please check your connection"
         android:textSize="18sp"
         android:gravity="center"
-        android:textColor="@color/dark_orange" />
+        android:textColor="@color/dark_green" />
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btnRetry"
         android:layout_width="match_parent"

@@ -33,6 +33,7 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:text="New Channel"
+            style="@style/TextAppearance.AppCompat.Body1"
             android:textSize="20dp" />
     </LinearLayout>
 </RelativeLayout>
