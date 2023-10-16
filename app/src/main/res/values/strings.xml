@@ -7,4 +7,6 @@
     <string name="Native_Ad_Unit">ca-app-pub-2583214494360788/6958694706</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="Onesignal_Id">73be95e4-ad0e-4d38-aaaf-8546845eae43</string>
 </resources>

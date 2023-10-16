@@ -29,9 +29,9 @@
                 android:textColor="@color/white"/>
         </LinearLayout>
     </androidx.cardview.widget.CardView>
-    <com.google.android.ads.nativetemplates.TemplateView
-        android:id="@+id/nativeAdView"
-        app:gnt_template_type="@layout/gnt_medium_template_view"
+
+    <FrameLayout
+        android:id="@+id/adViewContainer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"/>

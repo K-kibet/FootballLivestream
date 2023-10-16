@@ -1,12 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_width="380dp"
+    android:layout_height="400dp"
     android:gravity="center"
-    android:padding="10dp"
-    tools:context=".ErrorActivity">
+    android:padding="10dp">
 
     <ImageView
         android:id="@+id/imageView"
@@ -38,20 +35,11 @@
         android:layout_below="@id/error"
         android:text="Link will be available in few minutes,\n check later" />
     <Button
-        android:id="@+id/btnReload"
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:layout_marginTop="20dp"
-        android:text="RELOAD"
-        android:layout_below="@id/errorMessage"
-        android:backgroundTint="@color/dark_green"
-        android:drawableRight="@drawable/baseline_replay_circle_filled_24"/>
-    <Button
         android:id="@+id/btnOk"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
+        android:layout_height="70dp"
         android:layout_marginTop="20dp"
-        android:text="OK"
-        android:layout_below="@id/btnReload"
-        android:backgroundTint="@color/dark_green"/>
+        android:text="EXIT"
+        android:layout_below="@id/errorMessage"
+        />
 </RelativeLayout>

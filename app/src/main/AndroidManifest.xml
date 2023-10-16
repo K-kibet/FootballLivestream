@@ -15,9 +15,6 @@
         android:theme="@style/Theme.FootballLivestream"
         tools:targetApi="33">
         <activity
-            android:name=".ErrorActivity"
-            android:exported="false" />
-        <activity
             android:name=".LivestreamActivity"
             android:exported="false" />
         <activity

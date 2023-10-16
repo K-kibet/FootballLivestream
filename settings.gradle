@@ -14,4 +14,3 @@ dependencyResolutionManagement {
 }
 rootProject.name = "Football Livestream"
 include ':app'
-include ':nativetemplates'
